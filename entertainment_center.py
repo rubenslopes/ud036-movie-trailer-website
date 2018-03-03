@@ -30,7 +30,7 @@ def main():
 
     for m in movies_json['results']:
         trailer = get_youtube_trailer(m['id'])
-        img = 'https://image.tmdb.org/t/p/w500/%s' % m['poster_path']
+        img = 'https://image.tmdb.org/t/p/w500%s' % m['poster_path']
         movies.append(media.Movie(m['title'], m['overview'], img, trailer))
 
     fresh_tomatoes.open_movies_page(movies)

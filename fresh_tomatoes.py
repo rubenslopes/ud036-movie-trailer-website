@@ -18,6 +18,7 @@ def create_movie_tiles_content(movies):
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=movie.trailer_youtube_url
+            # storyline= movie.storyline
         )
 
     return content
@@ -43,6 +44,7 @@ def open_movies_page(movies):
     # Copy CSS and JS to dist folder
     copyfile('main.css', 'dist\\main.css')
     copyfile('main.js', 'dist\\main.js')
+    copyfile('favicon.ico', 'dist\\favicon.ico')
 
     # open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
