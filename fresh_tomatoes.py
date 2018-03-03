@@ -7,7 +7,7 @@ import webbrowser
 def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
     content = ''
-    for movie in movies:       
+    for movie in movies:
         # Load the template for display the movies
         movie_tile_content_file = open('movie_template.html')
         movie_tile_content = movie_tile_content_file.read()
@@ -21,12 +21,15 @@ def create_movie_tiles_content(movies):
             # storyline= movie.storyline
         )
 
+    if not content:
+        content = "No movies were found :'("
+
     return content
 
 
 def open_movies_page(movies):
     # Create or overwrite the output file
-    output_file = open('dist\\index.html', 'w')
+    output_file = open(os.path.join('dist', 'index.html'), 'w')
 
     # Load the template for display the movies
     main_page_content_file = open('template.html')
@@ -42,9 +45,9 @@ def open_movies_page(movies):
     output_file.close()
 
     # Copy CSS and JS to dist folder
-    copyfile('main.css', 'dist\\main.css')
-    copyfile('main.js', 'dist\\main.js')
-    copyfile('favicon.ico', 'dist\\favicon.ico')
+    copyfile('main.css', os.path.join('dist', 'main.css'))
+    copyfile('main.js', os.path.join('dist', 'main.js'))
+    copyfile('favicon.ico', os.path.join('dist', 'favicon.ico'))
 
     # open the output file in the browser (in a new tab, if possible)
     url = os.path.abspath(output_file.name)
