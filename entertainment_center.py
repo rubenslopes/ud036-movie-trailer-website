@@ -10,7 +10,9 @@ API_KEY = ''
 def get_youtube_trailer(movie_id):
     """Retrive the first YouTube trailer, if there is one"""
 
-    conn = urllib.urlopen('https://api.themoviedb.org/3/movie/%s/videos?api_key=%s' % (movie_id, API_KEY))
+    url = 'https://api.themoviedb.org/3/movie/%s/videos?api_key=%s'
+
+    conn = urllib.urlopen(url % (movie_id, API_KEY))
     videos = json.loads(conn.read())
 
     for v in videos['results']:
@@ -23,7 +25,9 @@ def get_youtube_trailer(movie_id):
 def main():
     """Retrive a list of upcoming movies"""
 
-    connection = urllib.urlopen('https://api.themoviedb.org/3/movie/upcoming?api_key=%s' % API_KEY)
+    url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=%s' % API_KEY
+
+    connection = urllib.urlopen(url)
     movies_json = json.loads(connection.read())
 
     movies = []
